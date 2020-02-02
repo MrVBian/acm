@@ -1,0 +1,96 @@
+专题十二 基础DP
+
+
+1 A HDU 1024 Max Sum Plus Plus
+题意：
+    n个数，选m个子段，各个子段连续且不相交，长度可以为1，求各个子区间的和最大值。
+思路：
+    pre数组上一层的dp
+        dp[i][j] = max(dp[i][j-1], dp[i-1][k]) + a[j]
+        dp[i][t] = max(dp[i][t-1], dp[i-1][k]) + a[j]
+        dp[t] = max(dp[t-1], dp[i-1][k]) + a[j]
+            dp[i-1][k]不必记录  记录dp[i-1][t]即可 即dp[t]的上一层dp[t-1]
+        dp[t] = max(dp[t-1], pre[t-1]) + a[j]
+
+
+2 B HDU 1029 Ignatius and the Princess IV
+题意：
+    n个数，其中一个数出现了（n+1）/2次，找到这个数
+思路：
+    哈希或者找出现了一半多一次的数均可
+
+
+3 C HDU 1069 Monkey and Banana
+题意：
+    已知n个长方体的长宽高，每类长方体无限个，可以旋转，要求上一个长方体的地面严格小于下面长方体的顶面
+    问最大高度
+思路：
+    每个长方体有六种不同的摆放方式，便有6*n类长方体摆放方式
+    即便长方体无限个，由于严格小于，相同摆放方式长方体地面一样大，故而每类摆放方式最多出现一次。
+    考虑往上面加长方体的情况较为复杂，而往下面加考虑起来容易得多，故而采用往下面加木块。
+    dp[i]表示以第i个长方体摆放方式为底最大高度。为了使j尽可能的满足小于i，对block排序，长宽递增，
+    初始化：
+        dp[i] = block[i].height;
+    状态转换方程：
+        if(block[i].length > block[j].length && block[i].width > block[j].width)
+            dp[i] = max(dp[i], dp[j] + block[i].height);
+
+
+4 D HDU 1074 Doing Homework
+题意：
+    要交作业了，有n个作业，每个作业都有一个名字(按照字典序提供作业)、截止交作业日期、完成时间。若延期交作业，每延期一天，扣一分。
+    求最小扣分，并输出路径(扣分相同，选字典序小的)
+思路：
+    n个作业，取值<=15。
+    需要用一个数描述作业提交的状态，一般来说当n比较小的时候，就是采用状压。
+    最多有 1 << 15 种作业提交状态
+    需要增加两个数组，pre[i]用来记录i状态最后完成的作业是pre[i]，time[i]表示i状态完成时共花费了time[i]时间
+    状态转换方程：
+        v = max(time[i-k] + a[j].v - a[j].e, 0)     // 在状态i时最后完成的扣分值，扣分不可为负数(按时完成)
+        dp[i] = min(dp[i], dp[j] + a[j].v)
+
+
+5 E HDU 1087 Super Jumping! Jumping! Jumping!
+
+
+6 F HDU 1114 Piggy-Bank
+
+
+7 G HDU 1176 免费馅饼
+
+
+8 H HDU 1260 Tickets
+
+
+9 I HDU 1257 最少拦截系统
+
+
+10 J HDU 1160 FatMouse's Speed
+
+
+11 K POJ 1015 Jury Compromise
+
+
+12 L POJ 1458 Common Subsequence
+
+
+13 M POJ 1661 Help Jimmy
+
+
+14 N POJ 2533 Longest Ordered Subsequence
+
+
+15 O POJ 3186 Treats for the Cows
+
+
+16 P HDU 1078 FatMouse and Cheese
+
+
+17 Q HDU 2859 Phalanx
+
+
+18 R POJ 3616 Milking Time
+
+
+19 S POJ 3666 Making the Grade
+

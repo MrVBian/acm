@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+#include<cstring>
+using namespace std;
+#define _for(i,a,b) for(int i=(a);i<(b);i++)
+#define _ref(i,a,b) for(int i=(a);i<=(b);i++)
+#define ms(a, b) memset(a, b, sizeof(a))
+#define fill(a,v,n) memset((a),(v),sizeof(a[0])*(n))
+#define sc(x) scanf("%d", &x)
+#define pr(x) printf("%d", (x))
+#define prn() printf("\n")
+#define IOS ios::sync_with_stdio(0);cin.tie(0);
+typedef double db;
+typedef long long ll;
+typedef unsigned long long ull;
+
+#define MOD 1000000007
+void _max(int &a, int b){a = max(a,b);}
+void _min(int &a, int b){a = min(a,b);}
+
+ll pw(ll a, ll b){ll res(1);while(b){if(b&1)res=res*a%MOD;a=a*a%MOD;b>>=1;}return res;}
+ll gcd(ll a, ll b){ll t;while(b){t=a%b;a=b;b=t;}return a;}
+const int infi = 2147483647;
+const ll infl = 9223372036854775807ll;
+const db PI = 3.14159265358979323846;
+
+inline void read(int &x)
+{
+    x = 0;
+    char c = getchar();
+    while(c<'0'||c>'9')c=getchar();
+    while(c>='0'&&c<='9')x=x*10+(c&15),c=getchar();
+}
+
+const int maxn=1000005;
+int Tree[maxn+10];
+inline int lowbit(int x){return x&(-x);}
+void add(int x,int value){for(int i=x;i<=maxn;i+=lowbit(i))Tree[i]+=value;}
+int get(int x){
+    int sum=0;
+    for(int i=x;i;i-=lowbit(i))
+        sum+=Tree[i];
+    return sum;
+}
