@@ -2,7 +2,7 @@
 
 
 
-## [模板及经典题目打印版](https://kodcloud.bianzw.cn/index.php?share/file&user=1&sid=WK9PXTZY)
+## [模板及经典题目打印版](https://cloud.bianzw.cn/index.php?share/file&user=1&sid=WK9PXTZY)
 
 
 
